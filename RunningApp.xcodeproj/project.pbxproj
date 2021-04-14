@@ -15,6 +15,9 @@
 		3E025FD026260D1900C7C12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E025FCE26260D1900C7C12B /* LaunchScreen.storyboard */; };
 		3E025FDB26260D1A00C7C12B /* RunningAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E025FDA26260D1A00C7C12B /* RunningAppTests.swift */; };
 		3E025FE626260D1A00C7C12B /* RunningAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E025FE526260D1A00C7C12B /* RunningAppUITests.swift */; };
+		3E02600A262795E600C7C12B /* RetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E026009262795E600C7C12B /* RetosViewController.swift */; };
+		3E02600F2627972D00C7C12B /* LogrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02600E2627972D00C7C12B /* LogrosViewController.swift */; };
+		3E0260142627975900C7C12B /* NotifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0260132627975900C7C12B /* NotifViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		3E025FE126260D1A00C7C12B /* RunningAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunningAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E025FE526260D1A00C7C12B /* RunningAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningAppUITests.swift; sourceTree = "<group>"; };
 		3E025FE726260D1A00C7C12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E026009262795E600C7C12B /* RetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetosViewController.swift; sourceTree = "<group>"; };
+		3E02600E2627972D00C7C12B /* LogrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogrosViewController.swift; sourceTree = "<group>"; };
+		3E0260132627975900C7C12B /* NotifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 				3E025FCC26260D1900C7C12B /* Assets.xcassets */,
 				3E025FCE26260D1900C7C12B /* LaunchScreen.storyboard */,
 				3E025FD126260D1900C7C12B /* Info.plist */,
+				3E026009262795E600C7C12B /* RetosViewController.swift */,
+				3E02600E2627972D00C7C12B /* LogrosViewController.swift */,
+				3E0260132627975900C7C12B /* NotifViewController.swift */,
 			);
 			path = RunningApp;
 			sourceTree = "<group>";
@@ -258,7 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E02600A262795E600C7C12B /* RetosViewController.swift in Sources */,
+				3E02600F2627972D00C7C12B /* LogrosViewController.swift in Sources */,
 				3E025FC826260D1900C7C12B /* ViewController.swift in Sources */,
+				3E0260142627975900C7C12B /* NotifViewController.swift in Sources */,
 				3E025FC426260D1900C7C12B /* AppDelegate.swift in Sources */,
 				3E025FC626260D1900C7C12B /* SceneDelegate.swift in Sources */,
 			);
