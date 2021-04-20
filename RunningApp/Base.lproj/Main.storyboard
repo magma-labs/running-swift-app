@@ -26,9 +26,16 @@
                         <constraints>
                             <constraint firstItem="3VQ-9u-qyk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9FK-mW-wX6"/>
                             <constraint firstItem="3VQ-9u-qyk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Afh-n3-Vuk"/>
+                            <constraint firstItem="3VQ-9u-qyk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BLg-Nd-K8U"/>
+                            <constraint firstAttribute="bottom" secondItem="3VQ-9u-qyk" secondAttribute="bottom" id="Efj-nh-32X"/>
+                            <constraint firstItem="3VQ-9u-qyk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="R65-1p-jKg"/>
                             <constraint firstAttribute="bottom" secondItem="3VQ-9u-qyk" secondAttribute="bottom" id="Skq-1K-NZb"/>
                             <constraint firstAttribute="bottom" secondItem="3VQ-9u-qyk" secondAttribute="bottom" id="V5Z-4v-05e"/>
+                            <constraint firstItem="3VQ-9u-qyk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="d9H-xj-J4N"/>
+                            <constraint firstItem="3VQ-9u-qyk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r10-8E-BUg"/>
+                            <constraint firstItem="3VQ-9u-qyk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vQw-Vd-ilb"/>
                             <constraint firstItem="3VQ-9u-qyk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xRD-uE-ZPD"/>
+                            <constraint firstItem="3VQ-9u-qyk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xty-Yy-HoE"/>
                         </constraints>
                     </view>
                     <connections>
