@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     var OurTimer = Timer()
     var TimerDisplayed:Int = 0;
+    var timerCounting:Bool = false;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startTrackingBtn(_ sender: Any) {
-        OurTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Action), userInfo: nil, repeats: true)
+        if(timerCounting) {
+            timerCounting = false
+            OurTimer.invalidate()
+            startTrackingBtn.setTitle("START", for: .normal)
+            startTrackingBtn.setTitleColor(UIColor.green, for: .normal)
+        } else {
+            timerCounting = true
+            startTrackingBtn.setTitle("STOP", for: .normal)
+            startTrackingBtn.setTitleColor(UIColor.red, for: .normal)
+            OurTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Action), userInfo: nil, repeats: true)
+        }
     }
     
     @objc func Action() {
