@@ -7,6 +7,8 @@ target 'RunningApp' do
 
   # Pods for RunningApp
   pod 'GoogleMaps'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   
   target 'RunningAppTests' do
     inherit! :search_paths
