@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import GoogleMaps
+import FirebaseCore
+import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GMSServices.provideAPIKey("AIzaSyCRa7ogdJ_ELpAR9zo5zlx9NPiTm_as1Z4");
+        FirebaseApp.configure();
+        
         return true
     }
 
