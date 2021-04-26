@@ -12,11 +12,13 @@ class Reto {
    let userA : String
    let userB : String
    let km : String
+   let winner: Bool
 
-    init(userA : String, userB: String, km: String) {
+    init(userA : String, userB: String, km: String, winner: Bool) {
        self.userA = userA
        self.userB = userB
        self.km = km
+       self.winner = winner
    }
 }
 
@@ -25,6 +27,7 @@ class RetosTVC: UITableViewCell {
     
     @IBOutlet weak var retosFriend: UILabel!
     @IBOutlet weak var km: UILabel!
+    @IBOutlet weak var result: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +39,7 @@ class RetosTVC: UITableViewCell {
     
 }
 
-class RetosViewController: UIViewController, UITableViewDataSource {
+class RetosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @State private var date = Date()
     @State public var segmented = 0
@@ -54,28 +57,38 @@ class RetosViewController: UIViewController, UITableViewDataSource {
         let cell = retosTableView.dequeueReusableCell(withIdentifier: "cell") as! RetosTVC
         let reto = rets[indexPath.row]
     
-        
         cell.retosFriend.text = reto.userB
         cell.km.text = reto.km
+        
+        if(reto.winner){
+            cell.result.text = "Ganando"
+            cell.result.textColor = UIColor.green
+        } else {
+            cell.result.text = "Perdiendo"
+            cell.result.textColor = UIColor.red
+        }
         
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        tableView.deselectRow(at: indexPath, animated: true)
+        retosTableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "retosDetailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("neeee")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("Retos view controller loaded")
-    
         
-        let reto1 = Reto(userA: "Alberto", userB: "Ramon", km: "20")
-        let reto2 = Reto(userA: "Pato", userB: "Pepe", km: "32")
-        let reto3 = Reto(userA: "Raul", userB: "Marcos", km: "10")
-        let reto4 = Reto(userA: "Pancho", userB: "Jose", km: "12")
+        let reto1 = Reto(userA: "Alberto", userB: "Ramon", km: "20", winner: false)
+        let reto2 = Reto(userA: "Pato", userB: "Pepe", km: "32" , winner: true)
+        let reto3 = Reto(userA: "Raul", userB: "Marcos", km: "10", winner: false)
+        let reto4 = Reto(userA: "Pancho", userB: "Jose", km: "12", winner: false)
         
         rets.append(reto1)
         rets.append(reto2)
@@ -83,6 +96,8 @@ class RetosViewController: UIViewController, UITableViewDataSource {
         rets.append(reto4)
         
         retosTableView.dataSource = self
+        retosTableView.delegate = self
+
     }
 
     

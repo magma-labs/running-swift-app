@@ -9,10 +9,15 @@ import UIKit
 
 class RetosDetailVC: UIViewController {
 
+    @IBOutlet weak var km: UILabel!
+    
+    var reto: Reto?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //km.text = "\((reto?.km)!)"
     }
     
 
