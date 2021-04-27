@@ -69,10 +69,8 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        
-        
         print("GoogleMapCamera ----> \(google_map.camera.target)")
-        let rect = GMSMutablePath()
+       let rect = GMSMutablePath()
        rect.add(CLLocationCoordinate2D(latitude: 19.0940143, longitude: -104.301896))
        rect.add(CLLocationCoordinate2D(latitude: 19.0933378, longitude: -104.2997518))
        rect.add(CLLocationCoordinate2D(latitude: 19.1038376, longitude: -104.3089629))
