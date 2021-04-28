@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -103,6 +104,9 @@
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="SignIn:" destination="i4F-dT-MJc" eventType="touchUpInside" id="wjY-TD-62Q"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -117,6 +121,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRd-V0-jmF">
+                                <rect key="frame" x="67" y="579" width="280" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" name="AccentColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GdW-3a-uva"/>
                         <color key="backgroundColor" red="0.10588235294117647" green="0.18823529411764706" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
@@ -131,6 +143,9 @@
                             <constraint firstItem="GdW-3a-uva" firstAttribute="trailing" secondItem="qpZ-Tg-Yjw" secondAttribute="trailing" constant="67" id="wG8-uh-e32"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblErrors" destination="HRd-V0-jmF" id="ELM-Oz-H7r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxa-uX-xcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,7 +154,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Una-Ci-aBb">
             <objects>
-                <tabBarController id="ubH-CO-aTV" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainController" modalPresentationStyle="fullScreen" id="ubH-CO-aTV" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ovl-k8-4yh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
