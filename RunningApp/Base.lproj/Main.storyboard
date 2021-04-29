@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4s2-lY-Vg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-888" y="1318"/>
+            <point key="canvasLocation" x="-1199" y="1217"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="csX-z5-mOM">
@@ -303,6 +303,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="tJ3-j0-ZAu"/>
                         <segue destination="C1I-Ne-bY5" kind="relationship" relationship="viewControllers" id="eas-SF-oOA"/>
                         <segue destination="uX0-lT-ZXH" kind="relationship" relationship="viewControllers" id="OY8-qC-KKP"/>
                         <segue destination="JsA-dm-kgq" kind="relationship" relationship="viewControllers" id="LsZ-SM-whE"/>
@@ -592,10 +593,10 @@
     <color key="tintColor" name="AccentColor"/>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
-        <image name="logoRun" width="1024" height="1024"/>
         <image name="calendar.badge.clock" catalog="system" width="128" height="108"/>
         <image name="flag" catalog="system" width="128" height="121"/>
         <image name="image2" width="800" height="800"/>
+        <image name="logoRun" width="1024" height="1024"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
