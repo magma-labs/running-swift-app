@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Inicio-->
+        <!--Tracking-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapsController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapsController" customModule="RunningApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="MapsContoller">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,12 @@
                         <viewLayoutGuide key="safeArea" id="QI9-Mm-Tdo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Inicio" image="mappin.and.ellipse" catalog="system" id="D3n-eb-YGV"/>
+                    <tabBarItem key="tabBarItem" title="Tracking" image="mappin.and.ellipse" catalog="system" id="D3n-eb-YGV"/>
+                    <connections>
+                        <outlet property="LabelTrack" destination="MVC-Ur-ryy" id="eGQ-4j-J5c"/>
+                        <outlet property="google_map" destination="3VQ-9u-qyk" id="BgC-fZ-JvD"/>
+                        <outlet property="startTrackingBtn" destination="glP-yk-Ehx" id="XZT-g8-aLz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4s2-lY-Vg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
