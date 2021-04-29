@@ -7,18 +7,23 @@
 
 import UIKit
 import SwiftUI
+import FirebaseFirestore
 
 class Reto {
-   let userA : String
    let userB : String
-   let km : String
+   let km : Int
    let winner: Bool
+   let myKm: Int
+   let daysLeft: Int
+   let opponentKm: Int
 
-    init(userA : String, userB: String, km: String, winner: Bool) {
-       self.userA = userA
+    init(userB: String, km: Int, winner: Bool, myKm: Int, daysLeft: Int, opponentKm: Int) {
        self.userB = userB
        self.km = km
        self.winner = winner
+       self.myKm = myKm
+       self.daysLeft = daysLeft
+       self.opponentKm = opponentKm
    }
 }
 
@@ -28,7 +33,8 @@ class RetosTVC: UITableViewCell {
     @IBOutlet weak var retosFriend: UILabel!
     @IBOutlet weak var km: UILabel!
     @IBOutlet weak var result: UILabel!
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -46,6 +52,7 @@ class RetosViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     @IBOutlet weak var retosTableView: UITableView!
+    var path = IndexPath()
     
     var rets:[Reto] = []
     
@@ -58,7 +65,7 @@ class RetosViewController: UIViewController, UITableViewDataSource, UITableViewD
         let reto = rets[indexPath.row]
     
         cell.retosFriend.text = reto.userB
-        cell.km.text = reto.km
+        cell.km.text = "\(reto.km)"
         
         if(reto.winner){
             cell.result.text = "Ganando"
@@ -71,35 +78,59 @@ class RetosViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView,willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+            path = indexPath
+            return indexPath
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         retosTableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "retosDetailSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("neeee")
+        
+        guard let retosVC = segue.destination as? RetosDetailVC else { return }
+        retosVC.opponentText = rets[path.row].userB
+        retosVC.daysLeftText = rets[path.row].daysLeft
+        retosVC.kmText = rets[path.row].km
+        retosVC.myKmText = rets[path.row].myKm
+        retosVC.opponentKmText = rets[path.row].opponentKm
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("Retos view controller loaded")
         
-        let reto1 = Reto(userA: "Alberto", userB: "Ramon", km: "20", winner: false)
-        let reto2 = Reto(userA: "Pato", userB: "Pepe", km: "32" , winner: true)
-        let reto3 = Reto(userA: "Raul", userB: "Marcos", km: "10", winner: false)
-        let reto4 = Reto(userA: "Pancho", userB: "Jose", km: "12", winner: false)
+        let db = Firestore.firestore();
         
-        rets.append(reto1)
-        rets.append(reto2)
-        rets.append(reto3)
-        rets.append(reto4)
+        db.collection("retos").addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(error!)")
+                    return
+                }
+            let _: [()] = documents.map {
+                    let ret = Reto(
+                        userB: $0["opponent"] as! String,
+                        km: $0["km"] as! Int,
+                        winner: false,
+                        myKm: $0["myKm"] as! Int,
+                        daysLeft: $0["daysLeft"] as! Int,
+                        opponentKm: $0["opponentKm"] as! Int
+                    )
+                
+                    self.rets.append(ret)
+                }
+
+            self.retosTableView.reloadData()
+            return
+        }
         
         retosTableView.dataSource = self
         retosTableView.delegate = self
 
     }
-
     
     @IBAction func retoType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
