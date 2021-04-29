@@ -29,7 +29,7 @@ class LoginController: UIViewController {
                   case .invalidEmail:
                     self?.lblErrors?.text = "Invalid Email"
                   default:
-                    self?.lblErrors?.text = "Contraseña incorrecta"
+                    self?.lblErrors?.text = "Invalid Password or Username"
               }
             } else {
               // This variables are getting by auth method
@@ -40,5 +40,10 @@ class LoginController: UIViewController {
               self?.present(next, animated: true)
             }
         }
+    }
+    
+    @IBAction func btnSingnUp(_ sender: Any) {
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "SignUpController") as! SignUpController
+        self.present(next, animated: true)
     }
 }
