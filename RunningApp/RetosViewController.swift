@@ -105,7 +105,7 @@ class RetosViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let db = Firestore.firestore();
         
-        db.collection("retos").addSnapshotListener { querySnapshot, error in
+        db.collection("challenges").addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("Error fetching documents: \(error!)")
                     return
