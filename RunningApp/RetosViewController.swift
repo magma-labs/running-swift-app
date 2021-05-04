@@ -122,8 +122,9 @@ class RetosViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                     self.rets.append(ret)
                 }
-
-            self.retosTableView.reloadData()
+            
+            self.retosTableView.reloadData();
+            
             return
         }
         
