@@ -25,17 +25,15 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         startTrackingBtn.layer.cornerRadius = 15;
         saveTrackingBtn.layer.cornerRadius = 15;
-        // location
+
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
 
-        if CLLocationManager.locationServicesEnabled(){
+        if CLLocationManager.locationServicesEnabled() {
            locationManager.startUpdatingLocation()
         }
     }
@@ -44,9 +42,10 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
         let userLocation :CLLocation = locations[0] as CLLocation
         let camera = GMSCameraPosition(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude, zoom: 15.0)
         let geocoder = CLGeocoder();
+        let uid:String = UserDefaults.standard.string(forKey: "uid")!;
         
         geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
-            if (error != nil){
+            if (error != nil) {
                 print("error in reverseGeocode")
             }
             
@@ -56,8 +55,8 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
                 self.placeMark = placemarks![0]
             }
         }
-        
-        db.collection("locations").document("UU46w8P8ASfvMtUkbR8fsPm0F0k2").collection("track").getDocuments() { [self] (querySnapshot, err) in
+                
+        /* db.collection("locations").document(uid).collection("sessions").getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -79,6 +78,57 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
                  
                 self.show_marker(position: self.google_map.camera.target)
                 google_map.camera = camera
+            }
+        } */
+    }
+    
+    func getFormattedDate(date: Date, format: String) -> String {
+            let dateformat = DateFormatter()
+            dateformat.dateFormat = format
+            return dateformat.string(from: date)
+    }
+
+    func addPosition() {
+        let manager = CLLocationManager()
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let uid:String = UserDefaults.standard.string(forKey: "uid")!;
+        let documentID:String = UserDefaults.standard.string(forKey: "documentID")!;
+        var ref: DocumentReference? = nil
+        let session = DispatchGroup()
+        let formatingDate = getFormattedDate(date: Date(), format: "dd-MMM-yyyy HH:mm:ss")
+                              
+        DispatchQueue.main.async {
+            if (documentID == "") {
+                ref = self.db.collection("racings")
+                        .document(uid)
+                        .collection("\(formatingDate)")
+                        .addDocument(data: [
+                            "latitude": locValue.latitude,
+                            "longitude": locValue.longitude,
+                            "timestamp": formatingDate
+                        ]){ [self] err in
+                            if let err = err {
+                                print("Error adding document: \(err)")
+                            } else {
+                                let defaults = UserDefaults.standard
+                                defaults.set("\(formatingDate)", forKey: "documentID")
+                            }
+                        }
+            }
+        }
+        
+        session.notify(queue: .main) {
+            print("\(documentID)")
+            
+            if(documentID != "") {
+                self.db.collection("racings")
+                        .document(uid)
+                        .collection("\(documentID)")
+                        .addDocument(data: [
+                            "latitude": locValue.latitude,
+                            "longitude": locValue.longitude,
+                            "timestamp": formatingDate
+                        ])
             }
         }
     }
@@ -113,11 +163,29 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    @IBAction func saveTrackingBtn(_ sender: Any) {
+       let alert = UIAlertController(title: "Finish session", message: "Are you sure to finish the racing?", preferredStyle: UIAlertController.Style.alert)
+
+       alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil ))
+       
+       alert.addAction(UIAlertAction(title: "Finish", style: UIAlertAction.Style.default, handler: { action in
+            print("Closing session")
+            let defaults = UserDefaults.standard
+            defaults.set("", forKey: "documentID")
+       }))
+        
+       self.present(alert, animated: true, completion: nil)
+        
+       
+    }
+    
     @objc func Action() {
         TimerDisplayed += 1
         let time = secondsToHoursMinutesSeconds(seconds: TimerDisplayed)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
-        LabelTrack.text = String(timeString)
+        LabelTrack.text = String(timeString);
+        
+        self.addPosition()
     }
     
     func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
