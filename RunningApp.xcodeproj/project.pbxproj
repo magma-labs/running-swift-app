@@ -16,9 +16,12 @@
 		3E025FDB26260D1A00C7C12B /* RunningAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E025FDA26260D1A00C7C12B /* RunningAppTests.swift */; };
 		3E025FE626260D1A00C7C12B /* RunningAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E025FE526260D1A00C7C12B /* RunningAppUITests.swift */; };
 		3E02600A262795E600C7C12B /* RetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E026009262795E600C7C12B /* RetosViewController.swift */; };
-		3E02600F2627972D00C7C12B /* LogrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02600E2627972D00C7C12B /* LogrosViewController.swift */; };
 		3E0260142627975900C7C12B /* NotifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0260132627975900C7C12B /* NotifViewController.swift */; };
 		3E0D0542263092A100AE13B7 /* RetosDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D0541263092A100AE13B7 /* RetosDetailVC.swift */; };
+		3E55B73D264C37C500408080 /* LogrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E55B73C264C37C500408080 /* LogrosViewController.swift */; };
+		3E55B742264C45C400408080 /* LogrosDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E55B741264C45C400408080 /* LogrosDetailVC.swift */; };
+		3E78CFAA2645E67E00E36C91 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78CFA92645E67E00E36C91 /* ProfileViewController.swift */; };
+		3E78CFAF2649ED3200E36C91 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78CFAE2649ED3200E36C91 /* ConfigViewController.swift */; };
 		8462C2A52638B8EF003509D3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462C2A42638B8EF003509D3 /* LoginController.swift */; };
 		847F1BD12630750700BAE7ED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847F1BD02630750700BAE7ED /* CoreLocation.framework */; };
 		84964C69264C49FB007C12A9 /* ResumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84964C68264C49FB007C12A9 /* ResumeController.swift */; };
@@ -62,9 +65,12 @@
 		3E025FE526260D1A00C7C12B /* RunningAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningAppUITests.swift; sourceTree = "<group>"; };
 		3E025FE726260D1A00C7C12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E026009262795E600C7C12B /* RetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetosViewController.swift; sourceTree = "<group>"; };
-		3E02600E2627972D00C7C12B /* LogrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogrosViewController.swift; sourceTree = "<group>"; };
 		3E0260132627975900C7C12B /* NotifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifViewController.swift; sourceTree = "<group>"; };
 		3E0D0541263092A100AE13B7 /* RetosDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetosDetailVC.swift; sourceTree = "<group>"; };
+		3E55B73C264C37C500408080 /* LogrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogrosViewController.swift; sourceTree = "<group>"; };
+		3E55B741264C45C400408080 /* LogrosDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogrosDetailVC.swift; sourceTree = "<group>"; };
+		3E78CFA92645E67E00E36C91 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3E78CFAE2649ED3200E36C91 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		76FDE7F6CB2E709709B69BC5 /* Pods-RunningAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningAppTests.debug.xcconfig"; path = "Target Support Files/Pods-RunningAppTests/Pods-RunningAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		779E4830CC0762BDD5BB383B /* Pods-RunningApp-RunningAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningApp-RunningAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningApp-RunningAppUITests/Pods-RunningApp-RunningAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8462C2A42638B8EF003509D3 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -145,10 +151,14 @@
 				3E025FD126260D1900C7C12B /* Info.plist */,
 				3E026009262795E600C7C12B /* RetosViewController.swift */,
 				3E0D0541263092A100AE13B7 /* RetosDetailVC.swift */,
-				3E02600E2627972D00C7C12B /* LogrosViewController.swift */,
 				3E0260132627975900C7C12B /* NotifViewController.swift */,
 				8462C2A42638B8EF003509D3 /* LoginController.swift */,
 				84AC645A263B2C3B00853F57 /* SignUpController.swift */,
+
+				3E78CFA92645E67E00E36C91 /* ProfileViewController.swift */,
+				3E78CFAE2649ED3200E36C91 /* ConfigViewController.swift */,
+				3E55B73C264C37C500408080 /* LogrosViewController.swift */,
+				3E55B741264C45C400408080 /* LogrosDetailVC.swift */,
 				84964C68264C49FB007C12A9 /* ResumeController.swift */,
 			);
 			path = RunningApp;
@@ -472,14 +482,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E02600A262795E600C7C12B /* RetosViewController.swift in Sources */,
-				3E02600F2627972D00C7C12B /* LogrosViewController.swift in Sources */,
+				3E78CFAF2649ED3200E36C91 /* ConfigViewController.swift in Sources */,
 				3E025FC826260D1900C7C12B /* MapsController.swift in Sources */,
 				3E0260142627975900C7C12B /* NotifViewController.swift in Sources */,
 				3E0D0542263092A100AE13B7 /* RetosDetailVC.swift in Sources */,
 				84AC645B263B2C3B00853F57 /* SignUpController.swift in Sources */,
+				3E55B73D264C37C500408080 /* LogrosViewController.swift in Sources */,
+				3E78CFAA2645E67E00E36C91 /* ProfileViewController.swift in Sources */,
 				3E025FC826260D1900C7C12B /* MapsController.swift in Sources */,
 				3E025FC426260D1900C7C12B /* AppDelegate.swift in Sources */,
 				3E025FC626260D1900C7C12B /* SceneDelegate.swift in Sources */,
+				3E55B742264C45C400408080 /* LogrosDetailVC.swift in Sources */,
 				8462C2A52638B8EF003509D3 /* LoginController.swift in Sources */,
 				84964C69264C49FB007C12A9 /* ResumeController.swift in Sources */,
 			);

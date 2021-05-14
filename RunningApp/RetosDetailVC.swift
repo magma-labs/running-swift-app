@@ -16,6 +16,7 @@ class RetosDetailVC: UIViewController {
     @IBOutlet weak var opponentProgress: UIProgressView!
     @IBOutlet weak var myProgressLabel: UILabel!
     @IBOutlet weak var opponentProgressLabel: UILabel!
+    @IBOutlet weak var runButton: UIButton!
     
     var opponentText: String? = ""
     var kmText: Int? = 0
@@ -25,6 +26,8 @@ class RetosDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        runButton.layer.cornerRadius = 10;
         
         self.opponent.text = opponentText
         self.daysLeft.text = "Quedan \(daysLeftText ?? 0) dias"
