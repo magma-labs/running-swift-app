@@ -103,30 +103,36 @@ class RetosViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let db = Firestore.firestore();
+        let reto1 = Reto(userB: "Roberto", km: 20, winner: true, myKm: 5, daysLeft: 5, opponentKm: 2)
+        let reto2 = Reto(userB: "Pancho", km: 11, winner: false, myKm: 4, daysLeft: 3, opponentKm: 6)
         
-        db.collection("retos").addSnapshotListener { querySnapshot, error in
-                guard let documents = querySnapshot?.documents else {
-                    print("Error fetching documents: \(error!)")
-                    return
-                }
-            let _: [()] = documents.map {
-                    let ret = Reto(
-                        userB: $0["opponent"] as! String,
-                        km: $0["km"] as! Int,
-                        winner: false,
-                        myKm: $0["myKm"] as! Int,
-                        daysLeft: $0["daysLeft"] as! Int,
-                        opponentKm: $0["opponentKm"] as! Int
-                    )
-                
-                    self.rets.append(ret)
-                }
-            
-            self.retosTableView.reloadData();
-            
-            return
-        }
+        rets.append(reto1)
+        rets.append(reto2)
+//        let db = Firestore.firestore();
+//
+//
+//        db.collection("challenges").addSnapshotListener { querySnapshot, error in
+//                guard let documents = querySnapshot?.documents else {
+//                    print("Error fetching documents: \(error!)")
+//                    return
+//                }
+//            let _: [()] = documents.map {
+//                    let ret = Reto(
+//                        userB: $0["opponent"] as! String,
+//                        km: $0["km"] as! Int,
+//                        winner: false,
+//                        myKm: $0["myKm"] as! Int,
+//                        daysLeft: $0["daysLeft"] as! Int,
+//                        opponentKm: $0["opponentKm"] as! Int
+//                    )
+//
+//                    self.rets.append(ret)
+//                }
+//
+//            self.retosTableView.reloadData();
+//
+//            return
+//        }
         
         retosTableView.dataSource = self
         retosTableView.delegate = self

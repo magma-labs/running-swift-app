@@ -15,11 +15,19 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Validation for login
+        Auth.auth().addStateDidChangeListener { auth, user in
+          if let user = user {
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "MainController") as! UITabBarController
+            self.present(next, animated: true)
+          }
+        }
     }
     
     @IBAction func SignIn(_ sender: Any) {
-        let email = emailInput.text!
-        let password = passwordInput.text!
+        let email = "testing123@test.io" // emailInput.text!
+        let password = "test123" // passwordInput.text!
         
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard self != nil else { return }
@@ -35,6 +43,11 @@ class LoginController: UIViewController {
               // This variables are getting by auth method
               let newUserInfo = Auth.auth().currentUser
               let email = newUserInfo?.email
+              let uid = newUserInfo?.uid
+                
+              let defaults = UserDefaults.standard
+              defaults.set(email, forKey: "email")
+              defaults.set(uid, forKey: "uid")
                 
               let next = self?.storyboard?.instantiateViewController(withIdentifier: "MainController") as! UITabBarController
               self?.present(next, animated: true)
