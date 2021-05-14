@@ -55,31 +55,9 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
                 self.placeMark = placemarks![0]
             }
         }
-                
-        /* db.collection("locations").document(uid).collection("sessions").getDocuments() { [self] (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                let rect = GMSMutablePath()
-
-                for document in querySnapshot!.documents {
-                    let latlongs = document.data()
-                    
-                    let latitude:Double = latlongs["lat"] as! Double
-                    let longitude:Double = latlongs["lng"] as! Double
-                    
-                    rect.add(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-                }
-                
-                let polyline = GMSPolyline(path: rect)
-                polyline.strokeWidth = 5.0
-                polyline.geodesic = true
-                polyline.map = self.google_map
-                 
-                self.show_marker(position: self.google_map.camera.target)
-                google_map.camera = camera
-            }
-        } */
+         
+        self.show_marker(position: self.google_map.camera.target)
+        google_map.camera = camera
     }
     
     func getFormattedDate(date: Date, format: String) -> String {
@@ -91,6 +69,7 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
     func addPosition() {
         let manager = CLLocationManager()
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let camera = GMSCameraPosition(latitude: locValue.latitude, longitude: locValue.longitude, zoom: 15.0)
         let uid:String = UserDefaults.standard.string(forKey: "uid")!;
         let documentID:String = UserDefaults.standard.string(forKey: "documentID")!;
         var ref: DocumentReference? = nil
@@ -114,6 +93,31 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
                                 defaults.set("\(formatingDate)", forKey: "documentID")
                             }
                         }
+            } else {
+                self.db.collection("locations").document(uid).collection("\(formatingDate)").getDocuments() { [self] (querySnapshot, err) in
+                   if let err = err {
+                       print("Error getting documents: \(err)")
+                   } else {
+                       let rect = GMSMutablePath()
+
+                       for document in querySnapshot!.documents {
+                           let latlongs = document.data()
+                           
+                           let latitude:Double = latlongs["lat"] as! Double
+                           let longitude:Double = latlongs["lng"] as! Double
+                           
+                           rect.add(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                       }
+                       
+                       let polyline = GMSPolyline(path: rect)
+                       polyline.strokeWidth = 5.0
+                       polyline.geodesic = true
+                       polyline.map = self.google_map
+                        
+                       self.show_marker(position: self.google_map.camera.target)
+                       google_map.camera = camera
+                   }
+               }
             }
         }
         
@@ -130,6 +134,8 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
                             "timestamp": formatingDate
                         ])
             }
+            
+            
         }
     }
     
@@ -169,14 +175,13 @@ class MapsController: UIViewController, CLLocationManagerDelegate {
        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil ))
        
        alert.addAction(UIAlertAction(title: "Finish", style: UIAlertAction.Style.default, handler: { action in
-            print("Closing session")
             let defaults = UserDefaults.standard
             defaults.set("", forKey: "documentID")
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "ResumeController") as! ResumeController
+            self.present(next, animated: true)
        }))
         
        self.present(alert, animated: true, completion: nil)
-        
-       
     }
     
     @objc func Action() {
