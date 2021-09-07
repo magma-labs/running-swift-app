@@ -26,8 +26,14 @@ class LoginController: UIViewController {
             defaults.set(uid, forKey: "uid")
             defaults.set("", forKey: "documentID")
             
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "MainController") as! UITabBarController
-            self.present(next, animated: true)
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "StartViewController") as! UIViewController
+            
+//            let secondViewController:StartViewController = StartViewController()
+//
+//            let viewController = StartViewController()
+//            window?.rootViewController = UINavigationController(rootViewController: viewController)
+
+            self.present(next, animated: false)
           }
         }
     }
