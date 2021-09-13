@@ -90,12 +90,12 @@ extension ResumeController:
 }
 
 
-extension ResumeController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("llega a tableview 1")
-        navigationController?.pushViewController(InviteFriendViewController, animated: true)
-    }
-}
+//extension ResumeController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("llega a tableview 1")
+//        navigationController?.pushViewController(InviteFriendViewController, animated: true)
+//    }
+//}
 
 extension ResumeController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
