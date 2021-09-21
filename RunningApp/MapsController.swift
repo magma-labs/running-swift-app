@@ -11,10 +11,10 @@ import CoreLocation
 import FirebaseFirestore
 
 class MapsController: UIViewController, CLLocationManagerDelegate {
-    @IBOutlet weak var google_map: GMSMapView!
-    @IBOutlet weak var startTrackingBtn: UIButton!
-    @IBOutlet weak var LabelTrack: UILabel!
-    @IBOutlet weak var saveTrackingBtn: UIButton!
+    @IBOutlet weak var google_map_view: GMSMapView!
+    @IBOutlet weak var startTrackingButton: UIButton!
+    @IBOutlet weak var timeTrack: UILabel!
+    @IBOutlet weak var saveTrackingButton: UIButton!
     
     var OurTimer = Timer()
     var TimerDisplayed:Int = 0;
